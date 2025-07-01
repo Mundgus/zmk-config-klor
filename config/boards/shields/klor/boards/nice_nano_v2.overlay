@@ -1,15 +1,15 @@
 #include <dt-bindings/led/led.h>
 
 / {
-    leds {
+    leds: leds {
         compatible = "ws2812";
-        gpios = <&gpio0 6 0>;    /* P0.06 */
+        gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;  // P0.06, aktív magas jel
         chain-length = <21>;
-        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
         label = "WS2812";
         status = "okay";
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
     };
-    
+
     chosen {
         zmk,underglow = <&leds>;
     };
