@@ -1,15 +1,16 @@
 #include <dt-bindings/led/led.h>
 
-&led_strip {
-    compatible = "ws2812";
-    gpios = <&gpio0 6 0>;
-    chain-length = <21>;
-    color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
-    label = "WS2812";
-};
-
- / {
+/ {
+    leds {
+        compatible = "ws2812";
+        gpios = <&gpio0 6 0>;    /* P0.06 */
+        chain-length = <21>;
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+        label = "WS2812";
+        status = "okay";
+    };
+    
     chosen {
-        zmk,underglow = &led_strip;
+        zmk,underglow = <&leds>;
     };
 };
